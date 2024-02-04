@@ -6,3 +6,5 @@ class Person {
       this.age = age;
    }
 }
+
+let person = new Person("Peter",55)
