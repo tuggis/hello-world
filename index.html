@@ -4,10 +4,36 @@
       <meta charset="UTF-8" />
       <meta name="viewport" content="width=device-width, initial-scale=1.0" />
       <title>Document</title>
+      <style>
+         * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+         }
+         .menu {
+            position: fixed;
+            height: 100%;
+            width: 50%;
+            border: 1px solid;
+            left: -45%;
+            transition: 1s ease-in-out;
+         }
+         .show {
+            left: 0% !important;
+         }
+      </style>
    </head>
    <body>
       <h1>Hello</h1>
-      <h2>World</h2>
-      <button>Press me</button>
+      <div class="menu">
+         <div class="text">Show menu</div>
+      </div>
+
+      <script>
+         let menu = document.querySelector(".menu");
+         menu.addEventListener("click", function (e) {
+            menu.classList.toggle("show");
+         });
+      </script>
    </body>
 </html>
