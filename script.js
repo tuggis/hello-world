@@ -10,3 +10,5 @@ class Person {
 let person = new Person("Peter", 55);
 
 console.log(person);
+
+let persons = [new Person("Petter",44), new Person("Nils",44)]
