@@ -14,25 +14,74 @@
             position: fixed;
             height: 100%;
             width: 50%;
+            border: 1px soldi;
+            background-color: lightgrey;
+            left: -48%;
+            transition: 0.5s ease-in;
+         }
+         .menucontainer {
+            display: flex;
+            height: 100%;
+         }
+         .text {
+            flex: 1;
+            order: 2;
             border: 1px solid;
-            left: -45%;
-            transition: 1s ease-in-out;
+            text-align: end;
+            font-weight: bold;
+         }
+         .container {
+            flex: 4;
+            order: 1;
+            border: 1px solid;
+         }
+         h2 {
+            text-align: center;
          }
          .show {
-            left: 0% !important;
+            left: 0 !important;
          }
       </style>
    </head>
    <body>
       <h1>Hello</h1>
       <div class="menu">
-         <div class="text">Show menu</div>
+         <h2>Menu stuff goes here</h2>
+         <div class="menucontainer">
+            <div class="text">>>></div>
+            <div class="container">
+               <textarea
+                  name="mytextarea"
+                  id="mytextarea"
+                  cols="30"
+                  rows="10"
+               ></textarea
+               ><br />
+               <button id="mybutton">Press</button>
+            </div>
+         </div>
       </div>
 
       <script>
          let menu = document.querySelector(".menu");
+         let text = document.querySelector(".text");
+         let mybutton = document.querySelector("#mybutton");
+         let textarea = document.querySelector("textarea");
+         mybutton.addEventListener("click", (e) => {
+            console.log(textarea.value);
+         });
          menu.addEventListener("click", function (e) {
-            menu.classList.toggle("show");
+            console.log(e.target.tagName);
+            if (e.target.tagName === "DIV") {
+               menu.classList.toggle("show");
+               text.innerHTML =
+                  text.innerHTML === "&lt;&lt;&lt;" ? ">>>" : "<<<";
+            } else {
+            }
+            console.log(text.innerHTML);
+         });
+         menu.addEventListener("transitionstart", function (e) {
+            console.log("Start");
          });
       </script>
    </body>
