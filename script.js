@@ -7,4 +7,6 @@ class Person {
    }
 }
 
-let person = new Person("Peter",55)
+let person = new Person("Peter", 55);
+
+console.log(person);
