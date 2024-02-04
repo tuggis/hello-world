@@ -31,15 +31,24 @@
             font-weight: bold;
          }
          .container {
-            flex: 4;
+            flex: 8;
             order: 1;
             border: 1px solid;
          }
          h2 {
             text-align: center;
+            padding: 2rem 0rem;
          }
          .show {
             left: 0 !important;
+         }
+         textarea {
+            width: 100%;
+         }
+         #mybutton {
+            width: 100%;
+            padding: 1rem;
+            letter-spacing: 1rem;
          }
       </style>
    </head>
@@ -51,6 +60,7 @@
             <div class="text">>>></div>
             <div class="container">
                <textarea
+                  placeholder="Enter som stuff"
                   name="mytextarea"
                   id="mytextarea"
                   cols="30"
@@ -58,6 +68,12 @@
                ></textarea
                ><br />
                <button id="mybutton">Press</button>
+               <label for="red">red</label>
+               <input type="radio" id="red" name="color" value="red" />
+               <label for="red">blue</label>
+               <input type="radio" id="blue" name="color" value="blue" />
+               <label for="red">green</label>
+               <input type="radio" id="green" name="color" value="green" />
             </div>
          </div>
       </div>
@@ -67,12 +83,27 @@
          let text = document.querySelector(".text");
          let mybutton = document.querySelector("#mybutton");
          let textarea = document.querySelector("textarea");
+         let redradio = document.querySelector("#red");
+         redradio.addEventListener("change", (e) => {
+            console.log(e.target.value);
+            menu.style.backgroundColor = "crimson";
+         });
+         let blueradio = document.querySelector("#blue");
+         blueradio.addEventListener("change", (e) => {
+            console.log(e.target.value);
+            menu.style.backgroundColor = "lightblue";
+         });
+         let greenradio = document.querySelector("#green");
+         greenradio.addEventListener("change", (e) => {
+            console.log(e.target.value);
+            menu.style.backgroundColor = "lightgreen";
+         });
          mybutton.addEventListener("click", (e) => {
             console.log(textarea.value);
          });
          menu.addEventListener("click", function (e) {
             console.log(e.target.tagName);
-            if (e.target.tagName === "DIV") {
+            if (e.target.classList.contains("text")) {
                menu.classList.toggle("show");
                text.innerHTML =
                   text.innerHTML === "&lt;&lt;&lt;" ? ">>>" : "<<<";
