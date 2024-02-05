@@ -54,6 +54,9 @@
    </head>
    <body>
       <h1>Hello</h1>
+      <h2 id="timer"></h2>
+      <button id="startButton">Start</button>
+      <button id="stopButton">Stop</button>
       <div class="menu">
          <h2>Menu stuff goes here</h2>
          <div class="menucontainer">
@@ -79,11 +82,52 @@
       </div>
 
       <script>
+         window.onkeyup = function (e) {
+            console.log(e);
+            console.log(e.altKey);
+            console.log(e.ctrlKey);
+            if (e.key === "f") {
+               text.click();
+            }
+         };
+         let startButton = document.querySelector("#startButton");
+         startButton.id = 0;
+         console.dir(startButton);
+         let stopButton = document.querySelector("#stopButton");
+         let id = 0;
+         startButton.addEventListener("click", (e) => {
+            id = startTimer("start");
+         });
+         stopButton.addEventListener("click", (e) => {
+            stopTimer("stop");
+         });
+         function stopTimer() {
+            clearInterval(id);
+         }
+         function startTimer(s) {
+            let id = 0;
+
+            id = setInterval(function (e) {
+               console.log(`id=${id}`);
+               let d = new Date();
+
+               timer.innerHTML = `${d.getHours()} - ${
+                  d.getMinutes() < 10 ? "0" + d.getMinutes() : d.getMinutes()
+               } - ${d.getSeconds()}`;
+            }, 1000);
+            return id;
+         }
+
          let menu = document.querySelector(".menu");
          let text = document.querySelector(".text");
+         setTimeout(function (e) {
+            text.click();
+         }, 5000);
          let mybutton = document.querySelector("#mybutton");
          let textarea = document.querySelector("textarea");
          let redradio = document.querySelector("#red");
+         let timer = document.querySelector("#timer");
+
          redradio.addEventListener("change", (e) => {
             console.log(e.target.value);
             menu.style.backgroundColor = "crimson";
